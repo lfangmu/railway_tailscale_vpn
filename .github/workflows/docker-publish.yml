@@ -41,8 +41,8 @@ jobs:
       id: meta
       uses: docker/metadata-action@v4
       with:
-        # Use repository name with hyphens instead of underscores for Docker Hub compatibility
-        images: ${{ format('{0}/{1}', secrets.DOCKER_HUB_USERNAME, replace(github.event.repository.name, '_', '-')) }}
+        # Use a fixed image name format that works with Docker Hub
+        images: ${{ secrets.DOCKER_HUB_USERNAME }}/railway-tailscale-vpn
         tags: |
           type=semver,pattern={{version}}
           type=semver,pattern={{major}}.{{minor}}
